@@ -25,6 +25,7 @@ public class Account {
     private Currency currency;
     private BigDecimal amount;
 
+
     public Long getId() {
         return id;
     }
