@@ -4,10 +4,9 @@ package com.account.rest.controller;
 import com.account.rest.model.Account;
 import com.account.rest.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class AccountController {
@@ -16,8 +15,8 @@ public class AccountController {
     private AccountRepository accountRepository;
 
     @GetMapping("/accounts")
-    public Page<Account> getAllAccounts(Pageable pageable) {
-        return accountRepository.findAll(pageable);
+    public List<Account> getAllAccounts() {
+        return accountRepository.findAll();
     }
 
     @PostMapping("/accounts")

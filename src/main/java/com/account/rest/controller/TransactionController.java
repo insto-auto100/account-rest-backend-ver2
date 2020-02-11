@@ -5,11 +5,10 @@ import com.account.rest.model.Transaction;
 import com.account.rest.repository.AccountRepository;
 import com.account.rest.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class TransactionController {
@@ -21,9 +20,8 @@ public class TransactionController {
     private TransactionRepository transactionRepository;
 
     @GetMapping("/accounts/{accountId}/transactions")
-    public Page<Transaction> getAllTransactionsByAccountId(@PathVariable(value = "accountId") Long accountId,
-                                                           Pageable pageable) {
-        return transactionRepository.findByAccountId(accountId, pageable);
+    public List<Transaction> getAllTransactionsByAccountId(@PathVariable(value = "accountId") Long accountId) {
+        return transactionRepository.findByAccountId(accountId);
     }
 
     @PostMapping("/accounts/{accountId}/transactions")
